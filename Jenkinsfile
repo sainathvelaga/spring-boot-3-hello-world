@@ -12,6 +12,8 @@ pipeline {
         APP_NAME = "my-springboot-app"
         IMAGE_TAG = "latest"
         IMAGE_NAME = "${APP_NAME}:${IMAGE_TAG}"
+        JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-21.0.7.0.6-1.el9.x86_64/bin/java'
+        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
     }
     stages {
         stage('read the version'){
@@ -28,7 +30,7 @@ pipeline {
         stage('Build'){
             steps{
                 sh """
-                    JAVA_HOME=/usr/bin/java mvn clean package
+                    JAVA_HOME mvn clean package
                 """
             }
         }
