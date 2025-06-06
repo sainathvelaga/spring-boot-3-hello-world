@@ -9,7 +9,7 @@ pipeline {
     }
     environment{
         def appVersion = '' //variable declaration
-        APP_NAME = "my-springboot-app"
+        APP_NAME = "spring-boot-3-hello-world"
         IMAGE_TAG = "latest"
         IMAGE_NAME = "${APP_NAME}:${IMAGE_TAG}"
         DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
