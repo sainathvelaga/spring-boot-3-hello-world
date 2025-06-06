@@ -51,13 +51,14 @@ pipeline {
                     passwordVariable: 'DOCKERHUB_PASSWORD')]) 
                     {
                         // Login to Docker Hub
-                        sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
-                        // Build Docker image
-                        sh "docker build -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME} -t "${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${APP_VERSION}" . "
+                        sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                        // Build the Docker image
+                        sh "docker build -t $IMAGE_NAME ."
                         // Tag the Docker image
-                        // sh "docker tag ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG} index.docker.io/${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG}"
-                        // Push Docker image to Docker Hub
-                        sh "docker push ${DOCKERHUB_USERNAME}/${IMAGE_NAME}"
+                        sh "docker tag $IMAGE_NAME $DOCKERHUB_USERNAME/$IMAGE_NAME"
+                        // Push the Docker image to Docker Hub
+                        sh "docker push $DOCKERHUB_USERNAME/$IMAGE_NAME"
+                        echo "Docker image $DOCKERHUB_USERNAME/$IMAGE_NAME pushed successfully."
                     }
                 }
             }
