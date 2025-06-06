@@ -12,7 +12,7 @@ pipeline {
         APP_NAME = "my-springboot-app"
         IMAGE_TAG = "latest"
         IMAGE_NAME = "${APP_NAME}:${IMAGE_TAG}"
-
+        DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
 
     }
     stages {
