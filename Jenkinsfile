@@ -28,7 +28,7 @@ pipeline {
         stage('Build'){
             steps{
                 sh """
-                    mvn clean package
+                    JAVA_HOME=/usr/bin/java mvn clean package
                 """
             }
         }
