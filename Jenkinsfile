@@ -37,7 +37,7 @@ pipeline {
 
         stage ('Archive artifacts'){
             steps{
-                archiveArtifacts artifacts: "spring-boot-3-helloworld-${appVersion}.jar", fingerprint: true
+                archiveArtifacts artifacts: "spring-boot-3-hello-world-${appVersion}.jar", fingerprint: true
                 sh 'ls -la'
             }
         }
