@@ -51,7 +51,7 @@ pipeline {
                     passwordVariable: 'DOCKERHUB_PASSWORD')]) 
                     {
                         // Login to Docker Hub
-                        sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
+                        sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
                         // Build Docker image
                         sh "docker build -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG} ."
                         // Tag the Docker image
