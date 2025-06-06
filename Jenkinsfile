@@ -13,8 +13,6 @@ pipeline {
         IMAGE_TAG = "latest"
         IMAGE_NAME = "${APP_NAME}:${IMAGE_TAG}"
 
-        export JAVA_HOME= "/usr/lib/jvm/java-21-openjdk-amd64"
-        export PATH= "$JAVA_HOME/bin:$PATH"
 
     }
     stages {
