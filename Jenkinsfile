@@ -46,7 +46,8 @@ pipeline {
                 script {
                     // Load Docker Hub credentials from Jenkins credentials store
                     withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS, usernameVariable: 'DOCKERHUB_USERNAME', 
-passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    passwordVariable: 'DOCKERHUB_PASSWORD')]) 
+                    {
                         // Login to Docker Hub
                         sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
                         // Build Docker image
@@ -59,9 +60,6 @@ passwordVariable: 'DOCKERHUB_PASSWORD')]) {
                 }
             }
         }
-    }
-        
-
         stage('Deploy'){
             steps{
                 script{
@@ -72,6 +70,10 @@ passwordVariable: 'DOCKERHUB_PASSWORD')]) {
                 }
             }
         } 
+    }
+        
+
+
     
     
     post { 
